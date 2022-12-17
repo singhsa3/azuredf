@@ -1,5 +1,5 @@
 {
-	"name": "pipeline_load_curent_year_data_from_sqldb_to_synapse",
+	"name": "dataflow_load_curent_year_data_from_sqldb_to_synapse",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {

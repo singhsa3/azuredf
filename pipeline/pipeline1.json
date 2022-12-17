@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "payroll_load_2021_payroll_into_SQLDB",
+						"referenceName": "dataflow_payroll_load_2021_payroll_into_SQLDB",
 						"type": "DataFlowReference"
 					},
 					"compute": {

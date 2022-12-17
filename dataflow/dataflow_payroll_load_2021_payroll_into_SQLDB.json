@@ -1,5 +1,5 @@
 {
-	"name": "payroll_load_2021_payroll_into_SQLDB",
+	"name": "dataflow_payroll_load_2021_payroll_into_SQLDB",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
