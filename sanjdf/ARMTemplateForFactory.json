@@ -721,7 +721,7 @@
 						"     mapColumn(",
 						"          FiscalYear,",
 						"          PayrollNumber,",
-						"          AgencyCode,",
+						"          AgencyID = AgencyCode,",
 						"          AgencyName,",
 						"          EmployeeID,",
 						"          LastName,",
