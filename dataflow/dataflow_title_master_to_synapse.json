@@ -1,12 +1,12 @@
 {
-	"name": "dataflow_employee_master_to_synapse",
+	"name": "dataflow_title_master_to_synapse",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "EmpMaster",
+						"referenceName": "NYC_Payroll_TITLE_MD",
 						"type": "DatasetReference"
 					},
 					"name": "source1"
@@ -15,7 +15,7 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "NYC_Payroll_EMP_MD",
+						"referenceName": "NYC_Payroll_TITLE_MD",
 						"type": "DatasetReference"
 					},
 					"name": "sink1"
@@ -24,19 +24,16 @@
 			"transformations": [],
 			"scriptLines": [
 				"source(output(",
-				"          EmployeeID as string,",
-				"          LastName as string,",
-				"          FirstName as string",
+				"          TitleCode as string,",
+				"          TitleDescription as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> source1",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table',",
+				"     staged: true) ~> source1",
 				"source1 sink(allowSchemaDrift: false,",
 				"     validateSchema: true,",
-				"     input(",
-				"          AgencyID as string,",
-				"          AgencyName as string",
-				"     ),",
 				"     deletable:false,",
 				"     insertable:true,",
 				"     updateable:false,",
@@ -46,7 +43,11 @@
 				"     allowCopyCommand: true,",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     errorHandlingOption: 'stopOnFirstError') ~> sink1"
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          TitleCode,",
+				"          TitleDescription",
+				"     )) ~> sink1"
 			]
 		}
 	}
