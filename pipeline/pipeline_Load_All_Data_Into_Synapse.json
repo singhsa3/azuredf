@@ -137,6 +137,13 @@
 						"referenceName": "dataflow_load_curent_year_data_from_sqldb_to_synapse",
 						"type": "DataFlowReference"
 					},
+					"staging": {
+						"linkedService": {
+							"referenceName": "AzureDataLakeStorage1",
+							"type": "LinkedServiceReference"
+						},
+						"folderPath": "adlsnycpayrollsk/dirstaging"
+					},
 					"compute": {
 						"coreCount": 8,
 						"computeType": "General"
