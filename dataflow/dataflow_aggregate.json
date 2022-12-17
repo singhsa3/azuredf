@@ -19,7 +19,11 @@
 					"name": "history"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"name": "sink1"
+				}
+			],
 			"transformations": [
 				{
 					"name": "union1"
@@ -27,6 +31,12 @@
 				{
 					"name": "filter1",
 					"description": "toInteger(FiscalYear) >= $dataflow_param_fiscalyear"
+				},
+				{
+					"name": "TotalPaid"
+				},
+				{
+					"name": "aggregate1"
 				}
 			],
 			"scriptLines": [
@@ -61,14 +71,14 @@
 				"source(output(",
 				"          FiscalYear as short,",
 				"          PayrollNumber as short,",
-				"          AgencyID as short,",
+				"          AgencyID as string,",
 				"          AgencyName as string,",
-				"          EmployeeID as integer,",
+				"          EmployeeID as string,",
 				"          LastName as string,",
 				"          FirstName as string,",
 				"          AgencyStartDate as date,",
 				"          WorkLocationBorough as string,",
-				"          TitleCode as integer,",
+				"          TitleCode as string,",
 				"          TitleDescription as string,",
 				"          LeaveStatusasofJune30 as string,",
 				"          BaseSalary as double,",
@@ -83,7 +93,15 @@
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> history",
 				"current, history union(byName: true)~> union1",
-				"union1 filter(toInteger(FiscalYear) >= $fiscalyear) ~> filter1"
+				"union1 filter(toInteger(FiscalYear) >= $fiscalyear) ~> filter1",
+				"filter1 derive(TotalPaid = RegularGrossPaid + TotalOTPaid+TotalOtherPay) ~> TotalPaid",
+				"TotalPaid aggregate(groupBy(AgencyName,",
+				"          FiscalYear),",
+				"     TotalPaid = sum(TotalPaid)) ~> aggregate1",
+				"aggregate1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
 			]
 		}
 	}
