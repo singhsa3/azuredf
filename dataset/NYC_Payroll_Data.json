@@ -1,5 +1,5 @@
 {
-	"name": "AzureSynapseAnalyticsTable2",
+	"name": "NYC_Payroll_Data",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureSynapseAnalytics1",
