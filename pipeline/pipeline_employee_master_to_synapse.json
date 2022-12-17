@@ -1,0 +1,6 @@
+{
+	"name": "pipeline_employee_master_to_synapse",
+	"properties": {
+		"annotations": []
+	}
+}

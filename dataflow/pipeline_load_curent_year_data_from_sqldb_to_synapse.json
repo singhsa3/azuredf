@@ -1,5 +1,5 @@
 {
-	"name": "load_payroll_synapse",
+	"name": "pipeline_load_curent_year_data_from_sqldb_to_synapse",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
