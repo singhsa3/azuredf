@@ -89,6 +89,13 @@
 						"referenceName": "dataflow_title_master_to_synapse",
 						"type": "DataFlowReference"
 					},
+					"staging": {
+						"linkedService": {
+							"referenceName": "AzureDataLakeStorage1",
+							"type": "LinkedServiceReference"
+						},
+						"folderPath": "adlsnycpayrollsk/dirstaging"
+					},
 					"compute": {
 						"coreCount": 8,
 						"computeType": "General"
@@ -112,6 +119,13 @@
 					"dataflow": {
 						"referenceName": "dataflow_agency_master_to_synapse",
 						"type": "DataFlowReference"
+					},
+					"staging": {
+						"linkedService": {
+							"referenceName": "AzureDataLakeStorage1",
+							"type": "LinkedServiceReference"
+						},
+						"folderPath": "adlsnycpayrollsk/dirstaging"
 					},
 					"compute": {
 						"coreCount": 8,
