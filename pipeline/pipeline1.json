@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Data flow1",
+				"name": "payroll_data_pipeline",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [],
 				"policy": {
